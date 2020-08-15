@@ -1,6 +1,13 @@
+FROM golang:1.12 AS builder
+
+WORKDIR /go/src/github.com/rcperlin/rds_exporter
+COPY . ./
+RUN make build
+
 FROM        alpine:latest
 
-COPY rds_exporter  /bin/
+COPY --from=builder /go/src/github.com/rcperlin/rds_exporter/rds_exporter /bin/rds_exporter
+#COPY rds_exporter  /bin/
 # COPY config.yml           /etc/rds_exporter/config.yml
 
 RUN apk update && \

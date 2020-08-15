@@ -27,7 +27,7 @@ before_cache:
   - go clean -testcache
   # - go clean -cache
 
-go_import_path: github.com/percona/rds_exporter
+go_import_path: github.com/rcperlin/rds_exporter
 
 env:
   global:
